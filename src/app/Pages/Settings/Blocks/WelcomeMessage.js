@@ -1,5 +1,6 @@
 import React from "react";
 import { styled, css } from "styled-components";
+import { AppContext } from "../../../Provider/AppProvider";
 
 const StyledSpan = styled.span`
         color: red;
@@ -12,13 +13,9 @@ const StyledSpan = styled.span`
         color: green;
     `
 export default function WelcomeMessage() {
-    
-    return <h1>
-    <StyledSpan>
-        Welcome component
-    </StyledSpan>
-    <SecondSpan>
-        Second component
-    </SecondSpan>
-    </h1>
+    return (
+        <AppContext.Consumer>
+            {({firstVisit}) => firstVisit ? 'first visit' : 'not first visit'}
+        </AppContext.Consumer>
+    )
 }
